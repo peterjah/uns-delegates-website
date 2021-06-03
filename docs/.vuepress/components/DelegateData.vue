@@ -106,14 +106,9 @@
 <script>
 export default {
   created() {
-    const maybeData = this.$site.headTags.find(
+    this.$data.delegates = this.$site.headTags.find(
       (el) => el[0] === "delegateData"
-    );
-    if (maybeData && Array.isArray(maybeData) && maybeData.length > 0) {
-      this.$data.delegates = maybeData[1];
-    } else {
-      this.$data.delegates = [];
-    }
+    )[1];
   },
   async mounted() {
     const res = await fetch(
